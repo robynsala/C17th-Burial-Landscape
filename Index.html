@@ -10,10 +10,10 @@
     <title>17th-Century Burial Landscape of North America</title>
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="/mina.github.io/css/bootstrap.css" />
+    <link rel="stylesheet" href="/css/bootstrap.css" />
 
     <!-- Custom styles for this template -->
-    <link rel="stylesheet" href="/mina.github.io/css/style.css"  />
+    <link rel="stylesheet" href="/css/style.css"  />
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
     
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -41,13 +41,11 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html"><strong>Map Indian Archaeology</strong></a>
+          <a class="navbar-brand" href="index.html"><strong>17th-Century Burial Landscape of North America</strong></a>
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="/mina.github.io/index">Map</a></li>
-            <li><a href="/mina.github.io/project">The Project</a></li>
-			<li><a href="/mina.github.io/contact">Contact</a></li>
+            <li><a href="index">Map</a></li>
               </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -76,9 +74,8 @@ var map = new mapbox.Map({
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="/mina.github.io/js/bootstrap.min.js"></script>
-    <script src="/mina.github.io/leaflet-omnivore-master/leaflet-omnivore.js"></script>
-	<script src="/mina.github.io/mapbox-gl-leaflet-master/leaflet-mapbox-gl.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/leaflet-omnivore-master/leaflet-omnivore.js"></script>
 <!-- Pulls data from csv and intitiates map -->
 	<script>
 var map = L.map('map').setView([23.215757, 80.042289], 5);
@@ -88,17 +85,15 @@ L.tileLayer (https://a.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={ac
 	id: 'robynla.1ofn2j0c',
     accessToken: 'pk.eyJ1Ijoicm9ieW5sYSIsImEiOiJjaXRicThlMGswN3RxMm5vNjVteWVrNHN6In0.pYAd_W25VXyeDzj042MUIg'}).addTo(map);
 	//enter path for .csv here
-            omnivore.csv('/mina.github.io/IAR1950s_160611.csv')
+            omnivore.csv('burialsites2.csv')
              .on('ready', function(layer) {
        
 			this.eachLayer(function(marker) {
           
             // Bind a popup to each icon based on the same properties
             // Adds coloumns of extra info to marker popup
-				marker.bindPopup(marker.toGeoJSON().properties.Site + '<br><br>' +
-                marker.toGeoJSON().properties.Year + '<br><br> ' +
-                marker.toGeoJSON().properties.Acc + '<br><br> ' +
-                marker.toGeoJSON().properties.Institute, {autoPanPadding: [5,55]});
+				marker.bindPopup(marker.toGeoJSON().properties.Name + '<br><br>' ,
+                {autoPanPadding: [5,55]});
         });
     })
             .addTo(map);
